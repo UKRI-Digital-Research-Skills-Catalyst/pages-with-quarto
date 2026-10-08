@@ -60,7 +60,7 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "This short workshop shows you how to build and publish your own website using Quarto, a scientific and technical publishing system, and GitHub Pages, a free way to host a website straight from a GitHub repository.\nYou do not need any coding experience and you do not need to install anything. Everything happens in your web browser. You will write plain text, save it to GitHub, and a few moments later your website will be live at an address you can share.\nBy the end of this workshop, participants will have a working website with a home page, an about page, a navigation bar (navbar) and a look of their own. Along the way you will learn the building blocks that you can use to grow the site into a project page, a portfolio, a blog or a course website like this one.\n\n\n\nThis workshop is intended for researchers, research support staff and others who would like a simple website for a project, a group or themselves, and who would like to be able to update it easily. No experience of GitHub, Quarto, HTML or programming is assumed.\n\n\n\nThe workshop is on [TBC]\nRegister for the workshop: [TBC]\n\n\n\nParticipants will learn how to:\n\nSet up a GitHub account using a Google account, a Microsoft email address or any other email address.\nCreate and configure a GitHub repository so that it publishes a website to GitHub Pages.\nUse Quarto to create website content from plain text files (.qmd), including headings, lists, links, images and callouts.\nCreate a navbar so visitors can move between the pages of your site.\nUse a styles.css file to change the look of your website, including colours and fonts.\n\n\n\n\nThe workshop takes about two and a half hours. It can be shortened to two hours by skipping the optional parts, or stretched to three by spending more time on the challenges.\n\n\n\n\n\n\n\nTime (minutes)\nWhat we will do\n\n\n\n\n0 - 15\nWelcome, what Quarto and GitHub Pages are, and a look at a finished site\n\n\n15 - 35\nPart 1: Set up a GitHub account\n\n\n35 - 60\nPart 2: Create a repository and publish it with GitHub Pages\n\n\n60 - 90\nPart 3: Create website content with Quarto\n\n\n90 - 100\nBreak\n\n\n100 - 120\nPart 4: Create a navbar\n\n\n120 - 145\nPart 5: Change the look of your site with styles.css\n\n\n145 - 150\nWrap-up and where to go next"
+    "text": "This short workshop shows you how to build and publish your own website using Quarto, a scientific and technical publishing system, and GitHub Pages, a free way to host a website straight from a GitHub repository.\nYou do not need any coding experience and you do not need to install anything. Everything happens in your web browser. You will write plain text, save it to GitHub, and a few moments later your website will be live at an address you can share.\nBy the end of this workshop, participants will have a working website with a home page, an about page, a navigation bar (navbar) and a look of their own. Along the way you will learn the building blocks that you can use to grow the site into a project page, a portfolio, a blog or a course website like this one.\n\n\n\nThis workshop is intended for researchers, research support staff and others who would like a simple website for a project, a group or themselves, and who would like to be able to update it easily. No experience of GitHub, Quarto, HTML or programming is assumed.\n\n\n\nThe workshop is on [date and time to be confirmed]\nRegister for the workshop: [registration link to be added]\n\n\n\nParticipants will learn how to:\n\nSet up a GitHub account using a Google account, a Microsoft email address or any other email address.\nCreate and configure a GitHub repository so that it publishes a website to GitHub Pages.\nUse Quarto to create website content from plain text files (.qmd), including headings, lists, links, images and callouts.\nCreate a navbar so visitors can move between the pages of your site.\nUse a styles.css file to change the look of your website, including colours and fonts.\n\n\n\n\nThe workshop takes about two and a half hours. It can be shortened to two hours by skipping the optional parts, or stretched to three by spending more time on the challenges.\n\n\n\n\n\n\n\nTime (minutes)\nWhat we will do\n\n\n\n\n0 - 15\nWelcome, what Quarto and GitHub Pages are, and a look at a finished site\n\n\n15 - 35\nPart 1: Set up a GitHub account\n\n\n35 - 60\nPart 2: Create a repository and publish it with GitHub Pages\n\n\n60 - 90\nPart 3: Create website content with Quarto\n\n\n90 - 100\nBreak\n\n\n100 - 120\nPart 4: Create a navbar\n\n\n120 - 145\nPart 5: Change the look of your site with styles.css\n\n\n145 - 150\nWrap-up and where to go next\n\n\n\n\n\n\n[Instructor name] is [role and organisation]. [A sentence or two about the instructor and the project that funds the course.]"
   },
   {
     "objectID": "index.html#overview",
@@ -81,7 +81,7 @@
     "href": "index.html#how-to-sign-up",
     "title": "Welcome",
     "section": "",
-    "text": "The workshop is on [TBC]\nRegister for the workshop: [TBC]"
+    "text": "The workshop is on [date and time to be confirmed]\nRegister for the workshop: [registration link to be added]"
   },
   {
     "objectID": "index.html#learning-objectives",
@@ -96,6 +96,13 @@
     "title": "Welcome",
     "section": "",
     "text": "The workshop takes about two and a half hours. It can be shortened to two hours by skipping the optional parts, or stretched to three by spending more time on the challenges.\n\n\n\n\n\n\n\nTime (minutes)\nWhat we will do\n\n\n\n\n0 - 15\nWelcome, what Quarto and GitHub Pages are, and a look at a finished site\n\n\n15 - 35\nPart 1: Set up a GitHub account\n\n\n35 - 60\nPart 2: Create a repository and publish it with GitHub Pages\n\n\n60 - 90\nPart 3: Create website content with Quarto\n\n\n90 - 100\nBreak\n\n\n100 - 120\nPart 4: Create a navbar\n\n\n120 - 145\nPart 5: Change the look of your site with styles.css\n\n\n145 - 150\nWrap-up and where to go next"
+  },
+  {
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
+    "title": "Welcome",
+    "section": "",
+    "text": "[Instructor name] is [role and organisation]. [A sentence or two about the instructor and the project that funds the course.]"
   },
   {
     "objectID": "materials.html",
