@@ -33,9 +33,9 @@ experience of GitHub, Quarto, HTML or programming is assumed.
 
 ## How to sign-up
 
-The workshop is on **[date and time to be confirmed]**
+The workshop is on **[TBC]**
 
-**Register for the workshop:** [registration link to be added]
+**Register for the workshop:** [TBC]
 
 ## Learning objectives
 
@@ -67,8 +67,3 @@ time on the challenges.
 | 100 - 120 | Part 4: Create a navbar |
 | 120 - 145 | Part 5: Change the look of your site with `styles.css` |
 | 145 - 150 | Wrap-up and where to go next |
-
-## Instructor
-
-**[Instructor name]** is **[role and organisation]**. **[A sentence or two
-about the instructor and the project that funds the course.]**
