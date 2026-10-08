@@ -4,65 +4,71 @@ toc: true
 toc-location: right
 ---
 
-# Reproducible reports with Quarto
+# Build a website with Quarto and GitHub Pages
 
 ## Overview
 
-This on-line workshop introduces you to Quarto, a scientific and
-technical publishing system designed to facilitate reproducible working
-practices by allowing you to integrate code, results, and narrative text
-in a single document. Quarto supports multiple programming languages,
-including R, Python, Julia, and Observable JavaScript.
+This short workshop shows you how to build and publish your own website
+using [Quarto](https://quarto.org/), a scientific and technical
+publishing system, and [GitHub Pages](https://pages.github.com/), a free
+way to host a website straight from a GitHub repository.
 
-The workshop will be taught using R and RStudio, but the concepts are
-applicable to other programming languages supported by Quarto. Some
-familiarity with the layout of RStudio and beginner level knowledge of R
-is assumed.
+You do not need any coding experience and you do not need to install
+anything. Everything happens in your web browser. You will write plain
+text, save it to GitHub, and a few moments later your website will be
+live at an address you can share.
 
-By the end of this workshop, participants will be able to transform raw
-data into a professional, polished report (HTML, Word, or PDF) where the
-text and analysis remain in sync. We will use the
-[Gapminder](https://www.gapminder.org/) data on global development to
-demonstrate how to produce a reproducible country profile report that
-analyses the relationship between wealth (GDP per capita) and health
-(Life Expectancy) over the last 50 years.
+By the end of this workshop, participants will have a working website
+with a home page, an about page, a navigation bar (navbar) and a look of
+their own. Along the way you will learn the building blocks that you can
+use to grow the site into a project page, a portfolio, a blog or a
+course website like this one.
 
 ## Audience
 
-This workshop is intended for researchers and research support staff in
-academia or industry or others that regularly produce reports with data
-analysis.
+This workshop is intended for researchers, research support staff and
+others who would like a simple website for a project, a group or
+themselves, and who would like to be able to update it easily. No
+experience of GitHub, Quarto, HTML or programming is assumed.
 
 ## How to sign-up
 
-The on-line workshop is on **22 July 2026 1000 - 1200 GMT**
+The workshop is on **[date and time to be confirmed]**
 
-[**Register for the
-workshop**](https://digitalskillscatalyst.ac.uk/news/2026-01-13-quarto2.html)
+**Register for the workshop:** [registration link to be added]
 
 ## Learning objectives
 
 Participants will learn how to:
 
--   Construct a structured Quarto (.qmd) document using YAML headers to
-    define metadata (title, author, table of contents).
--   Format narrative text using Markdown syntax to create headers,
-    lists, and emphasis without relying on word processor GUIs.
--   Integrate R code chunks into prose to produce tables and
-    visualizations directly within the document.
--   Implement "Inline Code" to insert dynamic statistics (e.g., specific
-    means or *p*-values) directly into sentences, ensuring numbers
-    update automatically if the data changes.
--   Control report output using "Chunk Options" to hide raw code from
-    the final reader while keeping the results visible.
--   Render a single source document into multiple output formats (HTML
-    for web, MS Word for collaboration, or PDF for publication).
+-   Set up a GitHub account using a Google account, a Microsoft email
+    address or any other email address.
+-   Create and configure a GitHub repository so that it publishes a website
+    to GitHub Pages.
+-   Use Quarto to create website content from plain text files (`.qmd`),
+    including headings, lists, links, images and callouts.
+-   Create a navbar so visitors can move between the pages of your site.
+-   Use a `styles.css` file to change the look of your website, including
+    colours and fonts.
+
+## Schedule
+
+The workshop takes about two and a half hours. It can be shortened to two
+hours by skipping the optional parts, or stretched to three by spending more
+time on the challenges.
+
+| Time (minutes) | What we will do |
+|:---------------|:----------------|
+| 0 - 15 | Welcome, what Quarto and GitHub Pages are, and a look at a finished site |
+| 15 - 35 | Part 1: Set up a GitHub account |
+| 35 - 60 | Part 2: Create a repository and publish it with GitHub Pages |
+| 60 - 90 | Part 3: Create website content with Quarto |
+| 90 - 100 | Break |
+| 100 - 120 | Part 4: Create a navbar |
+| 120 - 145 | Part 5: Change the look of your site with `styles.css` |
+| 145 - 150 | Wrap-up and where to go next |
 
 ## Instructor
 
-Emma Rand is a Professor in the Department of Biology at the University
-of York where she specialises in teaching data science and
-reproducibility, particularly to those who do not see themselves as
-programmers. She leads a UKRI funded projects called
-[Cloud-SPAN](https://cloud-span.york.ac.uk/) and the [UKRI Digital
-Research Skills Catalyst](https://digitalskillscatalyst.ac.uk/).
+**[Instructor name]** is **[role and organisation]**. **[A sentence or two
+about the instructor and the project that funds the course.]**

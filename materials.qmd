@@ -1,781 +1,821 @@
 ---
-title: "Reproducible reports with Quarto"
+title: "Build a website with Quarto and GitHub Pages"
 toc: true
 toc-location: right
 ---
 
-```{r}
-#| label: setup
-#| echo: false
-inline <- function(x = "") paste0("`` `r ", x, "` ``")
-```
-
 # Introduction
 
-## Current process
+## Why a Quarto website?
 
--   Typically people analyse, plot and write up in different programs.
+-   Typically people build websites in drag-and-drop website builders or by
+    writing HTML by hand. Each has a learning curve and often a monthly cost.
 
--   Updates to data require manual updates to all the figures and tables as well
-    as to text reporting results.
+-   Content and layout get tangled together, so changing the look of a site
+    means editing every page.
 
--   Graphs are saved to files and inserted into the final report.
+-   It can be hard to see what changed, who changed it, or to go back to an
+    earlier version.
 
--   Reordering figures, tables and equations means updating everywhere they are
-    cross-referenced.
-
--   Submitting to a different journal requires reformatting the document.
-
--   Manual labour ..... error prone
+-   Moving a site between tools or hosting providers is a lot of manual
+    labour ..... and error prone
 
 ## What is Quarto?
 
--   An open-source scientific and technical publishing system that allows you to
-    create dynamic reproducible reports in a variety of output formats.
+-   An open-source scientific and technical publishing system that allows you
+    to create documents, presentations, books and websites from plain text
+    files.
 
--   Next generation RMarkdown. Many new features, greater standardisation and
-    more flexibility.
+-   You write in Markdown, a lightweight markup language for creating
+    formatted text using a plain-text editor. It was designed by [John Gruber
+    in 2004](https://daringfireball.net/projects/markdown/). Quarto turns it
+    into web pages.
 
-    -   Markdown is a lightweight markup language for creating formatted text
-        using a plain-text editor. It was designed by [John Gruber in
-        2004](https://daringfireball.net/projects/markdown/)
+-   Quarto can also run code (R, Python, Julia and Observable) and put the
+    results in your pages. We do not need that today, but your site can grow
+    to include it.
 
-    -   RMarkdown is an extension of Markdown that adds support for embedding R
-        code chunks in Markdown documents. It was created by JJ Allaire and
-        Yihui Xie early in 2014 but has been worked on by many others since.
+-   This website is a Quarto website.
 
--   Multi-language: Python, R, Julia, and Observable.
+## What are GitHub and GitHub Pages?
 
--   Include auto-numbered equations, figures and tables that can be cross
-    referenced
+-   [GitHub](https://github.com/) is a website for storing and sharing files
+    in a **repository**. It keeps a complete history of every change.
+
+-   [GitHub Pages](https://pages.github.com/) is a free service that turns the
+    files in a repository into a website with an address like
+    `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/`
+
+-   GitHub Actions is GitHub's built-in automation. We will use it to run
+    Quarto for us, so that nothing needs to be installed on your computer.
+
+## How the pieces fit together
+
+Every time you save a change to your repository, the following happens
+automatically:
+
+1.  You edit a file in your web browser and save ("commit") the change.
+
+2.  GitHub Actions starts a small computer in the cloud, installs Quarto and
+    turns your `.qmd` files into web pages.
+
+3.  GitHub Pages publishes the web pages at your website address.
+
+It takes a minute or two from saving to seeing the change on your website.
 
 # Exercises
 
 ## Scenario
 
-You are a data analyst for an international NGO. You have been asked to produce
-a reproducible country profile report that analyses the relationship between
-wealth (GDP per capita) and health (Life Expectancy) over the last 50 years.
+You have been asked to create a small website for yourself, your group or
+your project. It should have a home page, an about page, a navbar to move
+between them and a look of its own.
 
-## The data
+By the end of this workshop you will have a live website at an address you can
+share.
 
-```{r}
-#| echo: false
-library(tidyverse)
+Throughout, we use the repository name `my-first-quarto-site`. You are welcome
+to choose your own name. Wherever you see `YOUR-USERNAME` in the instructions,
+replace it with your own GitHub username.
 
-gapminder <- read_tsv("data-raw/gapminder.tsv")
+## Part 1: Set up a GitHub account {#part-1}
 
+If you already have a GitHub account, sign in at <https://github.com/login>
+and skip to [Part 2](#part-2).
 
+🎬 Open a new browser tab and go to <https://github.com/signup>
 
+You can sign up in one of three ways. Choose the one you decided on in the
+[pre-course instructions](before.qmd) and follow the matching steps.
+
+### Option 1: Continue with Google
+
+🎬 Click **Continue with Google**
+
+🎬 Choose your Google account and allow GitHub to use it to sign in
+
+🎬 If GitHub asks you to choose a username, see [Choosing a
+username](#choosing-a-username) below
+
+### Option 2: Use your Microsoft email address
+
+GitHub does not currently have a "Continue with Microsoft" button[^1]. You can
+still sign up with a Microsoft email address (an Outlook or Hotmail address, or
+a Microsoft work or school address) by using the email form.
+
+🎬 Type your Microsoft email address into the **Email** box and click
+**Continue**
+
+🎬 Create a password. Use a long one that you do not use anywhere else
+
+🎬 Choose a username, see [Choosing a username](#choosing-a-username) below
+
+🎬 Complete the puzzle if GitHub shows you one
+
+🎬 GitHub emails you a code. Open your Microsoft inbox, find the email from
+GitHub and type the code into the box on the sign-up page
+
+[^1]: GitHub's help pages say that, at the time of writing, Google and Apple are the
+    sign-in providers GitHub supports when you create an account. Sign-up
+    screens do change from time to time, so follow the on-screen prompts if
+    they differ from these instructions.
+
+### Option 3: Use any other email address
+
+The steps are exactly the same as Option 2, but with an email address from any
+other provider, such as your university, your employer or a personal address.
+
+### Choosing a username
+
+Your username is public and it becomes part of your website address, for
+example `https://YOUR-USERNAME.github.io/`. Choose something you are happy to
+share with colleagues and collaborators.
+
+-   Letters, numbers and single hyphens work best
+-   Short is better
+-   You can change your username later but your website address will change
+    with it
+
+### Finishing up
+
+🎬 If GitHub asks you to personalise your experience, you can skip it
+
+🎬 If asked to choose a plan, choose the free plan (**Continue for free**)
+
+🎬 Check you can see the GitHub home page with your username or avatar in the
+top right corner
+
+::: {.callout-tip title="Verify your email and keep your account safe"}
+You need a verified email address to create repositories. If GitHub has asked
+you for a code, make sure you have entered it. GitHub also recommends
+turning on two-factor authentication (2FA) or a passkey, which you can do after
+the course in your account settings.
+:::
+
+::: {.callout-important title="Challenge"}
+Sign out and then sign back in using the same route you used to sign up
+(Google, or your email and password). The menu for signing out is under your
+avatar in the top right corner. Making sure you can get back in now saves a
+lot of worry later.
+:::
+
+## Part 2: Create a repository and publish it {#part-2}
+
+### Create a repository
+
+A repository (or "repo") is a project folder stored on GitHub. Your website
+will live in one.
+
+🎬 Click the **+** in the top right corner of GitHub | **New repository**
+
+🎬 Fill in the form:
+
+-   Repository name: `my-first-quarto-site`[^2]
+
+-   Description: optional
+
+-   Choose **Public**[^3]
+
+-   Tick **Add a README file**
+
+-   Leave everything else as it is
+
+🎬 Click **Create repository**
+
+[^2]: The repository name becomes part of your website address, so keep it
+    short, with lower case letters, numbers and hyphens, and no spaces.
+
+[^3]: GitHub Pages is free for public repositories. Anyone on the internet can
+    see the files in a public repository and your website will be public too, so do
+    not put anything private in it.
+
+You now have a repository containing one file, `README.md`.
+
+### Turn on GitHub Pages
+
+🎬 Click the **Settings** tab at the top of your repository[^4]
+
+🎬 In the left menu, click **Pages**
+
+🎬 Under **Build and deployment**, find **Source** and choose **GitHub
+Actions** from the drop-down list
+
+[^4]: On a narrow screen the tabs are hidden behind a **...** button.
+
+This tells GitHub that you will provide instructions (a "workflow") for
+building your website. We will add the workflow shortly. The setting saves
+itself, so there is nothing else to click.
+
+### Add the Quarto configuration file
+
+Every Quarto website has a configuration file called `_quarto.yml`. It
+describes the website. Note the underscore at the start of the name.
+
+🎬 Click the **Code** tab to go back to your files
+
+🎬 Click **Add file** | **Create new file**
+
+🎬 In the name box, type `_quarto.yml`
+
+🎬 Paste this into the big text box:
+
+``` yml
+project:
+  type: website
+
+website:
+  title: "My first Quarto site"
 ```
 
-We will use data from [Gapminder](https://www.gapminder.org/). Gapminder was
-founded in 2005 by Ola Rosling, Anna Rosling Rönnlund and Hans Rosling. It aims
-to combat misguided global strategies rooted in misconceptions by promoting a
-fact-based worldview grounded reliable statistics. A subset of the data is
-[gapminder.tsv](dat-raw/gapminder.tsv). It has `r nrow(gapminder)` rows and
-`r ncol(gapminder)` columns (variables). The variables are:
-`r paste(colnames(gapminder), collapse = ", ")`[^1]. There are per-capita GDP
-and life expectancy data from `r length(unique(gapminder$year))` years (from
-`r min(gapminder$year)` to `r max(gapminder$year)`) for each of
-`r length(unique(gapminder$country))` countries.
+🎬 Click **Commit changes...** and then, in the box that appears, leave
+**Commit directly to the main branch** selected and click **Commit changes**[^5]
 
-[^1]: Per-capita GDP (Gross domestic product) is given in units
-    of [international
-    dollars](https://en.wikipedia.org/wiki/Geary%E2%80%93Khamis_dollar), “a
-    hypothetical unit of currency that has the same purchasing power parity that
-    the U.S. dollar had in the United States at a given point in time” – 2005,
-    in this case.
+[^5]: "Committing" is Git's word for saving a snapshot of your changes with a
+    short message about what you did. GitHub keeps every commit so you can see
+    the history of your project and go back to any earlier version.
 
-```{r}
-#| echo: false
-knitr::kable(gapminder) |> 
-  kableExtra::kable_styling() |> 
-  kableExtra::scroll_box(height = "200px")
+🚨 Indentation matters in YAML. Make sure `title` is indented two spaces
+under `website`, and `type` is indented two spaces under `project`.
+
+### Add the home page
+
+🎬 Click **Add file** | **Create new file**
+
+🎬 In the name box, type `index.qmd`
+
+🎬 Paste this into the big text box:
+
+``` markdown
+---
+title: "Hello, world!"
+---
+
+This is my first Quarto website.
 ```
 
-## Create a new Quarto document
+🎬 Click **Commit changes...** and then **Commit changes**
 
-### Create a new project
+`index.qmd` is the file that becomes your home page. The part between the
+three dashes is the YAML header which describes the page. The rest is the
+content.
 
-🎬 File \| New Project \| New Directory \| Quarto Project
+### Add the publishing workflow
 
--   Browse to an appropriate place and give your project a name.
+The last file tells GitHub to build and publish the website every time you
+save a change. It has to be in a particular folder.
 
--   I used `ngo-report`
+🎬 Click **Add file** | **Create new file**
 
--   Choose Engine: Knitr[^2]
+🎬 In the name box, type `.github/workflows/publish.yml`. Notice that each
+time you type a `/`, GitHub turns what you typed into a folder
 
--   Turn visual markdown editor off (for now)
+🎬 Paste this into the big text box:
 
-[^2]: The engine determines how the code in the document is executed. Knitr is
-    the R-based engine - it processes R code chunks and inline R expressions.
-    Quarto also supports Jupyter (for Python) and ObservableJS
+``` yml
+name: Publish Quarto site to GitHub Pages
 
-### Change some RStudio settings
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
 
-🎬 Tools \| Global Options
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
--   General:
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
-    -   Turn off the three "Restore ...." options
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
 
-    -   Turn "Save workspace to .RData on exit" to Never
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
 
--   R Markdown[^3]:
+      - name: Render the Quarto project
+        run: quarto render
 
-    -   Turn "Show output preview in:" to Viewer pane
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
-[^3]: The similarity between markdown and quarto means that RStudio uses R
-    Markdown settings to control Quarto's preview behaviour.
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
 
-### Your project contains
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
 
--   `ngo-report.RProj` - what makes the folder an RStudio project
+You do not need to understand every line today. In short:
 
--   `_quarto.yml` - the configuration file
+-   `on` says when to run: every time you commit to the `main` branch
+-   `build` installs Quarto and turns your `.qmd` files into a website (`quarto render`)
+-   `deploy` publishes that website with GitHub Pages
 
--   `ngo-report.qmd` - the main document containing some template text
+🎬 Click **Commit changes...** and then **Commit changes**
 
-The code is normal functioning code. You can run it interactively as you write
-your report.
+🚨 The most common problem is indentation. If your workflow fails, compare it
+carefully with the one above.
 
-🎬 Place your cursor in the code chunk and run it (Ctrl-Enter or use the green
-run button)
+### Watch your website being built
 
-🎬 Hit Render (Ctrl-Shift-K)
+🎬 Click the **Actions** tab
 
-Note that `ngo-report.html` is created and opened in the Viewer pane
+You will see a workflow run called "Publish Quarto site to GitHub Pages". A
+yellow circle means it is running, a green tick means it worked and a red
+cross means something went wrong.
 
-## Edit the YAML header
+🎬 Wait for the green tick. This usually takes a minute or two
 
-🎬 Add your name, and a title. Also add the engine and format
+🎬 Click **Settings** | **Pages**. At the top you will see the address of your
+website. It looks like `https://YOUR-USERNAME.github.io/my-first-quarto-site/`
+
+🎬 Click **Visit site**, and bookmark your website
+
+::: {.callout-tip title="Troubleshooting"}
+If the workflow shows a red cross, click it, then click the failed step to
+read the error. Check that:
+
+-   In **Settings** | **Pages**, the Source is **GitHub Actions**
+-   The files are called exactly `_quarto.yml` and `index.qmd`, including
+    the underscore and the lower case letters
+-   The workflow is at exactly `.github/workflows/publish.yml`
+-   The indentation matches the examples
+
+You can re-run a failed workflow by clicking **Re-run all jobs**.
+
+If the workflow has a green tick but the website says "404", wait a minute
+and refresh the page.
+:::
+
+::: {.callout-important title="Challenge"}
+Share the address of your website with the person next to you or in the chat.
+Can you find out what the address of their website is?
+:::
+
+## Part 3: Create website content with Quarto {#part-3}
+
+### Edit a page
+
+🎬 In the **Code** tab, click `index.qmd`
+
+🎬 Click the pencil icon (**Edit this file**) at the top right of the file
+
+🎬 Change the sentence below the header to something about you, your group
+or your project
+
+🎬 Click **Commit changes...** and then **Commit changes**
+
+🎬 Click the **Actions** tab, wait for the green tick and then refresh your
+website
+
+This is the rhythm of working with a Quarto website on GitHub: **edit, commit,
+wait, refresh**. It is slower than previewing on your own computer, so make a
+few changes before each commit.
+
+::: {.callout-tip title="Keep two windows open"}
+Keep your website in one tab and your repository in another. After each commit,
+swap to the website tab and refresh it once the **Actions** tab shows a green
+tick.
+:::
+
+### Edit the YAML header
+
+The YAML header sits between the two lines of three dashes at the top of every
+`.qmd` file. It holds information about the page such as its title.
+
+🎬 Edit `index.qmd` and change the YAML header to:
 
 ``` yml
 ---
-title: "The relationship between Gross Domestic Product per capita and Life Expectancy."
-author: "Emma Rand"
-engine: knitr
-format:
-  html
+title: "Hello, I'm Your Name"
+subtitle: "Welcome to my first Quarto website"
+author: "Your Name"
+date: last-modified
 ---
 ```
 
-### Add some content
+🎬 Replace "Your Name" with your own name
 
-🎬 Add a code chunk (Ctrl-Alt-I) for a simple graph.
+🎬 Commit the changes and refresh your website
 
-```{r}
-#| echo: fenced
-hist(rnorm(100))
+🚨 YAML is fussy. Keep the quote marks, keep the colon followed by a space
+and do not remove the dashes. If your website stops building, look at the
+header first.
+
+### Headings and text
+
+Quarto pages are written in Markdown. Here are the most useful bits of syntax.
+
+| Markdown Syntax | Output |
+|:-------------------------|:-------------------------|
+| `# Header 1` | A first level heading (the biggest) |
+| `## Header 2` | A second level heading |
+| `### Header 3` | A third level heading |
+| `*italics*` | *italics* |
+| `**bold**` | **bold** |
+| `***bold italics***` | ***bold italics*** |
+| `~~strikethrough~~` | ~~strikethrough~~ |
+| `` `verbatim code` `` | `verbatim code` |
+
+For lists, start each line with a dash for a bulleted list or with `1.`, `2.`
+and so on for a numbered list. Leave a blank line before the list.
+
+🎬 Delete the sentence in `index.qmd` and replace it with the text below, making
+the content your own:
+
+::: blockquote
+This is **my** website, built with Quarto and GitHub Pages. You will find:
+
+-   Information about me
+-   Links to my work
+-   Things I am interested in
+:::
+
+🎬 Make one word *italic*
+
+🎬 Add a second level heading called `## What I do` and a short paragraph below it
+
+🎬 Commit the changes and refresh your website
+
+### Links and images
+
+| Markdown Syntax | Output |
+|:-------------------------|:-------------------------|
+| `[Quarto](https://quarto.org)` | [Quarto](https://quarto.org) |
+| `![Caption](photo.jpg)` | An image with a caption |
+| `![Caption](photo.jpg){width="300"}` | An image 300 pixels wide |
+
+The text in square brackets before an image is its caption and its
+description for people using screen readers. Please always write one.
+
+🎬 Add a sentence to `index.qmd` with a link to a website you like
+
+🎬 Add a picture to your repository. Choose a small picture on your
+computer (a JPG or PNG under about 1 MB works best). In your repository, click
+**Add file** | **Upload files**, drag the picture in, then click **Commit
+changes**
+
+🎬 Edit `index.qmd` and add the picture, using the exact name of your file:
+
+``` markdown
+![A short description of the picture](photo.jpg){width="300"}
 ```
 
-🎬 Hit Render (Ctrl-Shift-K)
+🎬 Commit the changes and refresh your website
 
-### Edit the YAML header: default code chunk options
+🚨 File names on GitHub Pages are case sensitive. `Photo.JPG` and `photo.jpg` are
+different files, and the website will show a broken picture if the name in
+`index.qmd` does not match the file exactly.
 
-🎬 Set some default code chunk options. I recommend these for reports
+### Add a second page
+
+🎬 Click **Add file** | **Create new file** and call it `about.qmd`
+
+🎬 Add this text and make it about you:
+
+``` markdown
+---
+title: "About"
+---
+
+I work on ...
+
+## Contact
+
+You can find me at ...
+```
+
+🎬 Commit the changes
+
+🎬 Edit `index.qmd` and add a link to your new page:
+
+``` markdown
+Read more [about me](about.qmd).
+```
+
+Notice that you link to the `.qmd` file. Quarto changes the link to the web
+page when it builds the website.
+
+🎬 Commit the changes and refresh your website
+
+### Callouts
+
+Callouts draw attention to some text. They are made with a "div", which is a
+group of lines between a line starting with three colons and a line with only
+three colons.
+
+🎬 Add a callout to `index.qmd`:
+
+``` markdown
+::: {.callout-tip title="Did you know?"}
+Quarto turns plain text into web pages.
+:::
+```
+
+🎬 Commit the changes and refresh your website
+
+There are five types of callout: `note`, `tip`, `important`, `warning` and
+`caution`. Change `callout-tip` to `callout-note` and see what happens.
+
+::: {.callout-important title="Challenge"}
+Can you add a callout with the type `warning` and the title "Work in
+progress" to the bottom of your home page?
+:::
+
+::: {.callout-important title="Challenge"}
+Can you add a third page called `projects.qmd`, with a title, a bulleted
+list of three projects and a link from `about.qmd` to the new page?
+:::
+
+## Part 4: Create a navbar {#part-4}
+
+So far, the only way to get from one page to another is by following links
+that you typed. A navbar is a menu bar across the top of every page. It is
+described in `_quarto.yml`.
+
+### Add a navbar
+
+🎬 Click `_quarto.yml` and then the pencil icon (**Edit this file**)
+
+🎬 Replace the contents with:
 
 ``` yml
----
-title: "The relationship between Gross Domestic Product per capita and Life Expectancy."
-author: "Emma Rand"
-engine: knitr
-format:
-  html
-execute:
-  echo: false
-  include: true
-  error: false
-  message: false
-  warning: false
+project:
+  type: website
 
----
+website:
+  title: "My first Quarto site"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
 ```
 
-🚨 Indentation matters in YAML. Make sure the `execute` options are indented
-under `execute`.
+🎬 Commit the changes, wait for the green tick and refresh your website
 
-🎬 Hit Render (Ctrl-Shift-K)
+You should see a bar across the top of your website with the title of your
+site and two links. Let us look at how the file is organised:
 
-Code chunk options
+-   `navbar` is inside `website`, so it is indented two spaces
+-   `left` is inside `navbar`, so it is indented four spaces. It is the list of
+    links on the left of the bar
+-   Each link starts with a dash `-` and has a `text` (what visitors see)
+    and an `href` (the page it goes to)
 
--   `echo: false` code will not be included in output
--   `include: true` output will be included
--   `error: false` the document will not render if a code error occurs
--   `error: true` the document will render if a code error occurs and the errors
-    are displayed in the output instead of stopping the render
--   `message: false` messages and warnings will not be included
--   `warning: false`
+🚨 Use spaces, never tabs, and keep the indentation exactly as shown.
 
-🎬 Experiment with change the options and re-rendering. Try misspelling `rnorm`
-and switching between `error: true` and `error: false` to see the error option
-in action.
+### Add more to the navbar
 
-## Adding content
-
-🎬 Delete everything except the YAML header.
-
-### Headings
-
-+-----------------+---------------+
-| Markdown Syntax | Output        |
-+=================+===============+
-| ``` markdown    | # Header 1    |
-| # Header 1      |               |
-| ```             |               |
-+-----------------+---------------+
-| ``` markdown    | ## Header 2   |
-| ## Header 2     |               |
-| ```             |               |
-+-----------------+---------------+
-| ``` markdown    | ### Header 3  |
-| ### Header 3    |               |
-| ```             |               |
-+-----------------+---------------+
-| ``` markdown    | #### Header 4 |
-| #### Header 4   |               |
-| ```             |               |
-+-----------------+---------------+
-
-🎬 Add headings for: Introduction, Methods, Results, Discussion, and References
-
-🎬 Add a code chunk for package loading
-
-```{r}
-#| echo: fenced
-#| label: load-packages
-library(tidyverse)
-```
-
-`#| label: load-packages` is a code chunk label. These are useful here for
-navigating between chunks in RStudio, and essential later for cross-referencing
-figures and tables
-
-### Formatting text
-
-+---------------------+---------------------+
-| Markdown Syntax     | Output              |
-+=====================+=====================+
-| ``` markdown        | *italics*, **bold** |
-| *italics*,**bold**  |                     |
-| ```                 |                     |
-+---------------------+---------------------+
-| ``` markdown        | ***bold italics***  |
-| ***bold italics *** |                     |
-| ```                 |                     |
-+---------------------+---------------------+
-| ``` markdown        | superscript^2^      |
-| superscript^2^      |                     |
-| ```                 |                     |
-+---------------------+---------------------+
-| ``` markdown        | subscript~2~        |
-| subscript~2~        |                     |
-| ```                 |                     |
-+---------------------+---------------------+
-| ``` markdown        | ~~strikethrough~~   |
-| ~~strikethrough~~   |                     |
-| ```                 |                     |
-+---------------------+---------------------+
-| ``` markdown        | `verbatim code`     |
-| `verbatim code`     |                     |
-| ```                 |                     |
-+---------------------+---------------------+
-
-### Links & Images
-
-+------------------------------+------------------------------------------+
-| Markdown Syntax              | Output                                   |
-+==============================+==========================================+
-| ``` markdown                 | [Quarto](https://quarto.org)             |
-| [Quarto](https://quarto.org) |                                          |
-| ```                          |                                          |
-+------------------------------+------------------------------------------+
-| ``` markdown                 | ![Caption](images/logo.png){width="130"} |
-| ![Caption](images/logo.png)  |                                          |
-| ```                          |                                          |
-+------------------------------+------------------------------------------+
-
-🎬 Add this text to the Introduction
-
-::: blockquote
-There is a relationship between wealth and health. We will explore this using
-the relationship between Gross Domestic Product (GDP) per capita and Life
-Expectancy across countries and over time.
-:::
-
-🎬 Make the "per capita" italic
-
-🎬 Make "Gross Domestic Product (GDP)" a link to
-<https://en.wikipedia.org/wiki/Gross_domestic_product>
-
-### Data import
-
-🎬 Make a folder called `data-raw`
-
-🎬 Save [gapminder.tsv](data-raw/gapminder.tsv) to `data-raw`
-
-🎬 Add a code chunk with:
-
-```{r}
-#| echo: fenced
-#| label: import-data
-file <- "data-raw/gapminder.tsv"
-gapminder <- read_tsv(file)
-```
-
-🎬 Run chunks interactively
-
-🎬 Hit Render (Ctrl-Shift-K)
-
-### Methods text
-
-🎬 Add this text to Methods:
-
-::: blockquote
-We took per capita GDP and life expectancy data from 12 years (from 1952 to
-2007) for each of 142 countries. Analysis was carried out with R and tidyverse
-packages.
-:::
-
-It would be good not to have "hard coded" those numbers in the text. What if we
-get more data? Or want to make a report for a subset of the data?
-
-## Inline code: reproducible reporting
-
--   Inline code is how you include a variable value, like a sample size, mean or
-    statistical result, in a section of text.
-
--   In fact, any code output can be inserted directly into the text of a .qmd
-    file using inline code.
-
-Inline code goes between \`r\` and \`. That is, you type a backtick, the letter
-r, a space, your R expression, then a closing backtick.
-
-For example by writing:
-
-The squareroot of 2 is \`r `sqrt(2)` \`
-
-you will get:
-
-The squareroot of 2 is `r sqrt(2)`
-
-### Extract summary information for use in inline code
-
-🎬 Add a code chunk with:
-
-```{r}
-#| echo: fenced
-#| label: extract-summary
-# extract values for inline reporting
-n_years <- length(unique(gapminder$year))
-min_year <- min(gapminder$year)
-max_year <- max(gapminder$year)
-n_countries <- length(unique(gapminder$country))
-
-```
-
-🎬 Replace numbers in the Methods text with inline code:
-
-::: blockquote
-We took per capita GDP and life expectancy data from `r inline('n_years')` years
-(from `r inline('min_year')` to `r inline('max_year')`) for each of
-`r inline('n_countries')` countries. Analysis was carried out with R and
-tidyverse packages.
-:::
-
-🎬 Hit Render (Ctrl-Shift-K)
-
-## Tables
-
-Suppose we want to open our results section with information about the five most
-populated countries in `r max_year`. We can extract this information and report
-it in a table.
-
-🎬 Add a small piece of text to the results section:
-
-::: blockquote
-Data about the five most populated countries in `r inline('max_year')` is shown
-in Table 1.
-:::
-
-🎬 Add a code chunk with:
-
-```{r}
-#| echo: fenced
-#| label: max-year-top-pop
-max_year_top_pop <- gapminder |> 
-  filter(year == max_year) |> 
-  arrange(desc(pop)) |> 
-  slice_head(n = 5) 
-```
-
-If you run the code chunk interactively, you will see the data frame
-`max_year_top_pop` in the Environment pane. Highlighting and executing the name
-`max_year_top_pop` will show the data frame in qmd.
-
-If you want the table to appear in the rendered output you need to print.
-
-🎬 Add a code chunk with:
-
-```{r}
-#| echo: fenced
-#| label: max-year-top-pop-print
-max_year_top_pop
-```
-
-🎬 Hit Render (Ctrl-Shift-K)
-
-As you can see, this is not a very nice table. We can use the `kable` function
-from the `knitr`[^4] to make a nice table.
-
-[^4]: There are several packages for formatting tables in R such as
-    [**`gt`**](https://gt.rstudio.com/) and
-    [**`formattable`**](https://renkun-ken.github.io/formattable/) for HTML
-    tables and
-    [**`flextable`**](https://davidgohel.github.io/flextable/index.html) if you
-    have to render to Word
-
-🎬 Replace the `max_year_top_pop` in the previous code chunk with:
-
-```         
-max_year_top_pop |> 
-  knitr::kable(caption = "Table 1. Five most populated countries in 2007.")
-```
-
-🎬 Hit Render (Ctrl-Shift-K)
-
-You now have a nice table with a caption!
-
-We have written Table 1 in manually. This is not ideal because we might want to
-add/remove tables and cross reference them in the text and would not want to
-manually update all the places where the table is mentioned.
-
-Quarto has a great feature for naming, autonumbering and cross referencing
-tables. We simply have to include `tbl-` in the chunk label.
-
-🎬 Edit the chunk like this:
-
-```{r}
-#| echo: fenced
-#| label: tbl-max-year-top-pop
-max_year_top_pop |> 
-  knitr::kable(caption = "Five most populated countries in 2007.")
-```
-
-🎬 Hit Render (Ctrl-Shift-K)
-
-To cross reference we can refer to the table in the text with
-`@tbl-max-year-top-pop`.
-
-🎬 Edit the text to say:
-
-::: blockquote
-Data about the five most populated countries in is shown in
-`@tbl-max-year-top-pop`
-:::
-
-🎬 Hit Render (Ctrl-Shift-K)
-
-::: {.callout-important title="Challenge"}
-Can you add a table (and referring text) that shows the five most wealthy
-(gdpPercap) countries in `r max_year`? You will need to create new code chunks
-to extract the data and to print the table. Remember to include `tbl-` in the
-label of the code chunk that prints the table and to refer to it in the text
-with `@` followed by the chunk label.
-:::
-
-::: {.callout-important title="Challenge"}
-Try change the order of the table generating chunks and re-rendering. You will
-see that the table numbers are automatically updated and the cross references in
-the text are also automatically updated.
-:::
-
-## Figures
-
-Figures can be included in a similar way. The label of the code chunk which
-produces the figure is important. Just as we had to use `tbl-` in the chunk
-label to have output numbered as a table, we need to use `fig-` in the chunk
-label to have output numbered as a figure.
-
-We will make a bubble chart showing the relationship between GDP per capita and
-life expectancy in `r max_year`. The size of the bubbles will represent
-population and the colour will represent continent.
-
-🎬 Add a code chunk to the Results section to filter the data for the most
-recent year:
-
-```{r}
-#| echo: fenced
-#| label: subset-max-year
-
-# Filter the dataset to the most recent year for our report
-gapminder_max_year <- gapminder |> 
-  filter(year == max_year)
-```
-
-🎬 Now add the code for the figure. Make sure to include `fig-` in the chunk
-label
-
-```{r}
-#| echo: fenced
-#| label: fig-gdp-life-max-year
-
-# Create a bubble chart
-ggplot(gapminder_max_year, aes(x = gdpPercap, 
-                               y = lifeExp, 
-                               color = continent, 
-                               size = pop/10^6)) +
-  geom_point() +
-  scale_size_continuous(name = "Population\n(millions)") +
-  scale_color_discrete(name = NULL) +
-  scale_x_continuous(name = "Gross Domestic Product per capita") +
-  scale_y_continuous(name = "Life Expectancy (years)") +
-  theme_classic()
-```
-
-🎬 Add a sentence with a cross reference to the figure:
-
-::: blockquote
-The relationship between Gross Domestic Product (GDP) per capita and Life
-Expectancy across countries in `r max_year` is in `@fig-gdp-life-max-year`.
-:::
-
-🎬 Hit Render (Ctrl-Shift-K)
-
-## Figure legends
-
-Our figure has a number (because we used `fig-` in the chunk label) but it does
-not have a legend. There are two ways to add a legend:
-
-1.  Using the `fig-cap` chunk option
-
-2.  Using a div `:::`
-
-Divs are more flexible and their use extends beyond figure legends. I will show
-both methods.
-
-### A figure legend with `fig-cap`
-
-🎬 Add the `fig-cap` chunk option:
-
-```{r}
-#| echo: fenced
-
-#| fig-cap: "The relationship between Gross Domestic Product (GDP) 
-#|           per capita and Life Expectancy across countries 
-#|           in 2007."
-# Create a bubble chart
-# ...
-
-```
-
-You will notice that we do not need to number the figure ourselves. The figure
-is automatically numbered as Figure 1 and the legend is automatically updated to
-include the figure number.
-
-### A figure legend with a div
-
-Instead of using the `fig-cap` chunk option, we can use a div to create a figure
-legend. This is more flexible than `fig-cap` because:
-
--   You can include inline code, citations, special characters and formatting
--   You can more easily make multipanel figures
-
-🎬 Add a div by:
-
--   removing the `fig-cap` option **and** the `label` option. The label itself
-    moves from the chunk to the div — it is not deleted entirely
-
--   adding `:::` before and after the code chunk
-
--   placing the label after the opening `:::` like this: `:::{#fig-gdp-life}`
-    Note the `#` is important for numbering
-
--   Putting the legend text between the code chunk and the closing `:::`
-
-You can use this for legend text:
-
-::: blockquote
-**The relationship between Gross Domestic Product (GDP) *per capita* and Life
-Expectancy across countries `r inline("max_year")`.** Each point represents a
-country, plotted by gross domestic product (GDP) *per capita* (international
-dollars, x-axis) against life expectancy at birth in years (y-axis). Point
-colour indicates continental region and point size is proportional to population
-size (millions). Data are from the Gapminder dataset and were analysed with R
-and tidyverse packages.
-:::
-
-::: {.callout-important title="Challenge"}
-Can you add a figure that shows the relationship between Gross Domestic Product
-(GDP) *per capita* and Life Expectancy across countries in `r min_year` You will
-need to create new code chunks to subset the data and make the figure. Add the
-figure legend with a div. Remember to include `fig-` in the div label and to
-refer to it in the text with `@` followed by the chunk label.
-:::
-
-## The Visual editor!
-
--   The visual editor is a WYSIWYG editor for Quarto documents. It can be
-    accessed by clicking the `Visual Editor` button in the top right or by
-    Ctrl-Shift-F4
-
--   It makes it easier to add and edit content (although I find I often want to
-    use the source)
-
--   It is especially useful for adding citations.
-
-## Citations
-
-Quarto will automatically generate citations and a bibliography in a number of
-styles. To use this capability, you need:
-
--   the citation to be formatted in markdown `@key` where `key` is the citation
-    key for the reference you want to cite. The citation key is defined in the
-    bibliography file (see below) and is often the first author’s surname
-    followed by the year of publication, for example `@pollack_should_2007`.
-
--   A bibliographic data source, for example a BibLaTeX (.bib) or BibTeX
-    (.bibtex) file.
-
--   Optionally, a CSL file which specifies the formatting to use when generating
-    the citations and bibliography.
-
-The easiest way to add a citation is to use the visual editor which allows you
-to add citations from a variety of sources including: by doi, from Zotero and by
-searches of [Crossref](https://www.crossref.org/),
-[DataCite](https://datacite.org/), or
-[PubMed](https://pubmed.ncbi.nlm.nih.gov/).
-
-🎬 Switch to visual using the button or (Ctrl-Shift-F4)
-
-Go to the methods section where we have this text:
-
-::: blockquote
-Analysis was carried out with R and tidyverse packages.
-:::
-
-🎬 Put your cursor after tidyverse and do Insert \| Citation (Ctrl-Shift-F8)
-
-🎬 Chose R Package and search for tidyverse
-
-Note that it says (towards the end) that it will Create a bibliography file
-called `references.bib` and add the citation to it.
-
-🎬 Click Insert
-
-🎬 Hit Render (Ctrl-Shift-K)
-
-Ta da! You have a citation in the text and a bibliography at the end of the
-document.
-
-Open `references.bib` and you will see the BibTex entry for tidyverse. You can
-edit the BibTex entry to add other references to `references.bib`:
-
--   by copying and pasting BibTex entries manually from other sources.
--   using the Insert \| Citation (Ctrl-Shift-F8) option and adding by doi,
-    through a search, very usefully, a Zotero library if you have it set up.
-
-We will add the reference for R itself. You can find the reference for R using
-`citation()`:
-
-🎬 Get the reference for the version of R you are using:
-
-```{r}
-citation()
-```
-
-🎬 Copy the BibTex entry (starts with `@` and ends with `}` ) and paste it into
-`references.bib`
-
-🎬 Edit in a `key` (I used `R-core`) and save.
-
-🎬 Put your cursor after R, do Insert \| Citation (Ctrl-Shift-F8), choose
-Bibliography and add `R-core` and Insert.
-
-🎬 Hit Render (Ctrl-Shift-K)
-
-We are now going to use an article by @pollack_should_2007 as a reference for
-this statement:
-
-::: blockquote
-There is a relationship between wealth and health
-:::
-
-This article is available here:
-
-<https://www.sciencedirect.com/science/article/pii/S0749379707003145?via%3Dihub>
-
-If you are using a reference manager you may be using a browser extension to
-save the article. Otherwise Click Cite and export to BibTex.
-
-Copy the contents of the BibTex file and paste it into `references.bib` in your
-project folder. Edit the entry to add a key (I used `pollack_should_2007`) and
-save.
-
-🎬 Put your cursor after "wealth and health", do Insert \| Citation
-(Ctrl-Shift-F8), choose Bibliography and add `pollack_should_2007` and Insert.
-
-If you have any trouble getting hold of the BibTex entry, you can save
-[pollack_should_2007.bib](pollack_should_2007.bib) and copy the contents into
-`references.bib` in your project folder.
-
-🎬 Hit Render (Ctrl-Shift-K)
-
-::: {.callout-important title="Challenge"}
-Can you add citations for R and packages to the figure legends?
-:::
-
-## PDF output
-
-To output to PDF instead of HTML, we need to change the `format` in the YAML
-header.
-
-🎬 Put your cursor after html and press enter to get a new line and add `pdf`.
-Then put put cursor on the html and do Ctrl-Shift-C to comment it out:
+🎬 Edit `_quarto.yml` and add a search box and a link to your repository on the
+right side of the bar. Replace `YOUR-USERNAME` with your username:
 
 ``` yml
----
-title: "The relationship between Gross Domestic Product per capita and Life Expectancy."
-author: "Emma Rand"
-engine: knitr
-format:
-  # html
-  pdf
-execute:
-  echo: false
-  include: true
-  error: false
-  message: false
-  warning: false
+project:
+  type: website
 
----
+website:
+  title: "My first Quarto site"
+  navbar:
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+    right:
+      - icon: github
+        href: https://github.com/YOUR-USERNAME/my-first-quarto-site
+        aria-label: GitHub repository
 ```
 
-🎬 Hit Render (Ctrl-Shift-K)
+🎬 Commit the changes and refresh your website
+
+::: {.callout-important title="Challenge"}
+Add your `projects.qmd` page to the navbar. If you did not make it, make it
+now.
+:::
+
+::: {.callout-important title="Challenge"}
+Navbar links can also be grouped into a drop-down menu using `menu`. Can you
+find out how by looking at the [Quarto navigation
+guide](https://quarto.org/docs/websites/website-navigation.html) and make a
+drop-down menu called "More" that holds your About and Projects pages?
+:::
+
+## Part 5: Change the look of your site with `styles.css` {#part-5}
+
+Quarto websites are made of HTML, which says *what* is on the page, and CSS
+(Cascading Style Sheets), which says *how it looks*. Quarto writes the HTML for
+you, and you can add your own CSS in a file called `styles.css` to change the
+colours, fonts and layout.
+
+### Create the stylesheet
+
+🎬 Click **Add file** | **Create new file** and call it `styles.css`
+
+🎬 Paste this into the big text box:
+
+``` css
+/* css styles */
+
+h1, h2, h3 {
+  color: #58579B; /* blue */
+}
+```
+
+🎬 Click **Commit changes...** and then **Commit changes**
+
+Nothing will change on your website yet, because Quarto does not know about
+your stylesheet.
+
+### Tell Quarto to use your stylesheet
+
+🎬 Edit `_quarto.yml` and add this to the end, at the very left edge (it is
+not inside `website`):
+
+``` yml
+format:
+  html:
+    css: styles.css
+```
+
+🎬 Commit the changes, wait for the green tick and refresh your website. Your
+headings should now be blue
+
+A CSS rule has three parts:
+
+-   A **selector** says what to change. Here `h1, h2, h3` means "the first,
+    second and third level headings"
+-   A **property** says what aspect to change. Here `color` is the text colour
+-   A **value** says what to change it to. Here `#58579B` is a colour written as
+    a hexadecimal code. You can also use colour names such as `tomato` or
+    `teal`
+
+🎬 Change the colour to one you like. Search the web for "colour picker" to
+find codes for other colours
+
+### Style the navbar
+
+🎬 Edit `styles.css` and add these rules to the end:
+
+``` css
+/* Style the navbar */
+.navbar {
+  background-color: #2E2D62 !important; /* navy */
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-title,
+.navbar .nav-link {
+  color: #FFFFFF !important; /* white */
+}
+
+.navbar .nav-link:hover {
+  color: #FA6862 !important; /* pink */
+}
+```
+
+🎬 Commit the changes and refresh your website
+
+The `!important` tells the browser that your rule wins over Quarto's own
+styling. It is a heavy hammer, so use it only when a change does not seem to
+work.
+
+::: {.callout-tip title="Find out what to change"}
+Not sure what to call the thing you want to change? In your browser, right-click
+the part of your website and choose **Inspect**. The panel that opens shows the
+HTML for that spot, including the name of its class (the bit that starts with a
+dot in your CSS).
+:::
+
+### Change the font
+
+🎬 Edit `styles.css` and add this to the very top of the file, above everything
+else:
+
+``` css
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+```
+
+🎬 Commit the changes and refresh your website
+
+🚨 An `@import` line must come before all of the other rules. If your font does
+not change, check it is at the top of the file.
+
+### Make your own box
+
+You can also make your own styles and then use them on any part of a page.
+Earlier you made a callout, which is a div with a style. You can make your own.
+
+🎬 Add this to the end of `styles.css`:
+
+``` css
+/* My own style: a highlighted box */
+.highlight-box {
+  background-color: #E0F1FA; /* light blue */
+  border-left: 6px solid #29A69D; /* teal */
+  padding: 1rem;
+  margin: 1rem 0;
+}
+```
+
+🎬 Edit `index.qmd` and add this to the page:
+
+``` markdown
+::: {.highlight-box}
+This text is in a box styled by **my** CSS.
+:::
+```
+
+🎬 Commit the changes and refresh your website
+
+::: {.callout-important title="Challenge"}
+Choose a palette of three colours for your website and use it for the
+headings, the navbar and the highlighted box. Can you also change the
+colours of the `callout-tip` callout you made earlier? Use the Inspect trick to
+find the names you need.
+:::
+
+::: {.callout-tip title="Prefer a ready-made look?"}
+Quarto comes with a collection of ready-made themes. Add a line to `_quarto.yml`
+and your own `styles.css` still works on top of it:
+
+``` yml
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+```
+
+You can see the others in the [Quarto themes
+guide](https://quarto.org/docs/output-formats/html-themes.html).
+:::
 
 # Summary
 
--   Quarto is a Mutli-language scientific publishing system for creating dynamic
-    reproducible reports in a many formats. It is based on R Markdown.
+-   Quarto is a publishing system that turns plain text files into websites,
+    documents and more.
 
--   The YAML header provides metadata and sets the default behaviour for the
-    document
+-   GitHub stores your files with a full history of changes, and GitHub Pages
+    publishes your website for free from a repository.
 
--   Code chunk options determine how/whether they run whether code/output is
-    included in the rendered document
+-   You can sign up to GitHub with a Google account, a Microsoft email
+    address or any other email address.
 
--   Code can be run interactively
+-   A GitHub Actions workflow in `.github/workflows` runs Quarto for you each
+    time you commit, so you do not need to install anything.
 
--   “Divs” are used to group content together and apply styling to that content.
+-   `_quarto.yml` describes the whole website and `.qmd` files are the pages.
+    The YAML header at the top of each page gives its title and other details.
 
--   Figures, images, tables and equations can be numbered automatically and
-    cross referenced in text. The `fig-` and `tbl-` (etc) prefixes are important
-    for this.
+-   Markdown is used to make headings, lists, links and images. "Divs" group
+    content together to make callouts or to apply your own styling.
 
--   You can add citations and references.
+-   The navbar is built in `_quarto.yml` with a list of links.
 
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2026], `knitr` [@knitr1;
-@knitr2; @knitr3], `kableExtra` [@kableExtra]
+-   `styles.css` changes the look of the website with rules made of a
+    selector, a property and a value.
 
-# References
+# Where next?
+
+-   Quarto's [website guide](https://quarto.org/docs/websites/) shows how to
+    add blogs, listings and more
+
+-   The [Markdown basics](https://quarto.org/docs/authoring/markdown-basics.html)
+    page has more syntax like tables and equations
+
+-   [GitHub Pages documentation](https://docs.github.com/en/pages) explains how
+    to use your own domain name
+
+-   Set up two-factor authentication or a passkey for your GitHub account
+
+-   Quarto can also run R or Python code and put the results in your pages. The
+    [Reproducible reports with
+    Quarto](https://ukri-digital-research-skills-catalyst.github.io/quarto-intro/)
+    workshop, which these materials were adapted from, shows how
+
+Materials adapted from Rand, E. (2026). *Reproducible reports with Quarto. A
+UKRI Digital Research Skills Catalyst workshop* (v0.1.0-alpha). Zenodo.
+<https://doi.org/10.5281/zenodo.18848356>

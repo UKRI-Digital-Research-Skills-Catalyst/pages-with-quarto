@@ -5,117 +5,58 @@ toc-location: right
 ---
 
 To participate in this course, you will need a computer with internet
-access.
+access and a web browser.
 
-To follow along with the activities with the instructor, you will need R
-and RStudio installed on your computer, **or** access to Posit Cloud, an
-online platform for R and RStudio. You will also need some R packages
-and optionally, a lateX distribution if you want to create PDF reports.
+You do **not** need to install any software. We will use GitHub, a free
+website, to store and edit all of our files, and GitHub will build and
+publish our website for us.
 
-If you are using a computer provided by your organisation you may need
-your IT department to install the software. If that is not possible, you
-can use Posit Cloud instead.
+If you are using a computer provided by your organisation you may find
+that some websites are blocked. Please check Step 1 below before the
+course. If GitHub is blocked, you could use a personal computer instead.
 
-## Step 1: Install R and RStudio or use Posit Cloud
+## Step 1: Check your browser and connection
 
-### Use Posit Cloud
+You can use any recent version of Chrome, Edge, Firefox or Safari.
 
-Posit Cloud is an online platform that allows you to use R and RStudio
-directly from your web browser, without needing to install anything on
-your computer. The [free plan](https://posit.cloud/plans/free) is plenty
-for this workshop
+1.  Open your browser and go to <https://github.com/>
+2.  Check that the page loads and you can see a "Sign up" button
+    in the top right corner.
 
-1.  Go to <https://positcloud.com/>
-2.  Create a free account by clicking "Sign Up" in the top right corner
-3.  Once logged in, click "New Project" and select "New RStudio Project"
-4.  You can now use R and RStudio in your web browser!
+If the page does not load, please contact your IT department or
+the course organisers before the course.
 
-### Install R and RStudio on your computer
+## Step 2: Decide which email address to use
 
-If you already have R and RStudio installed, check that you have at
-least R version 4.2 and RStudio version 2022.07 or later. If not, please
-install the latest versions by following the instructions below. Quarto
-comes with recent versions of RStudio and does not need to be installed
-separately.
+To use GitHub you need a free GitHub account and to confirm it by email.
+During the course you will sign up in one of three ways. Decide now which
+one you would like to use:
 
-#### Windows
+1.  **A Google account.** You will click "Continue with Google" and sign
+    in as you normally do.
+2.  **A Microsoft email address.** For example, an Outlook or Hotmail
+    address, or your work or school address if it is a Microsoft one. You
+    will type this address into the GitHub sign-up form.
+3.  **Any other email address.** You will type this address into the
+    GitHub sign-up form.
 
-1.  **Install R:**
-    -   Go to <https://cran.r-project.org/bin/windows/base/>
-    -   Click "Download R-4.x.x for Windows" (where x.x is the latest
-        version number)
-    -   Run the downloaded `.exe` file and follow the installation
-        wizard
-    -   Accept the default settings
-2.  **Install RStudio:**
-    -   Go to <https://posit.co/download/rstudio-desktop/>
-    -   Click "Download RStudio Desktop for Windows"
-    -   Run the downloaded `.exe` file and follow the installation
-        wizard
-    -   Accept the default settings
+Whichever you choose, make sure that you can open the inbox for that
+address during the course, because GitHub will send you a code to confirm
+that the address is yours.
 
-#### Mac
+💡 If you use a work or university address, think about what will happen
+when you leave. A personal address means you will not lose access to your
+website when you change jobs.
 
-1.  **Install R:**
-    -   Go to <https://cran.r-project.org/bin/macosx/>
-    -   Download the `.pkg` file for your Mac:
-        -   For Apple Silicon Macs (M1, M2, M3): Download the "arm64"
-            version
-        -   For Intel Macs: Download the "x86_64" version
-    -   Open the downloaded `.pkg` file and follow the installation
-        wizard
-    -   Accept the default settings
-2.  **Install RStudio:**
-    -   Go to <https://posit.co/download/rstudio-desktop/>
-    -   Click "Download RStudio Desktop for macOS"
-    -   Open the downloaded `.dmg` file
-    -   Drag the RStudio icon to your Applications folder
+## Step 3: Arrange your screen
 
-#### Linux
+During the course you will switch between this course website and GitHub.
+It helps to have the course website open in one browser window and GitHub in
+another, side by side, if your screen is big enough. Otherwise, use two tabs.
 
-1.  **Install R:**
+## Step 4: Create your account early (optional)
 
-    -   Open a terminal
-    -   For Ubuntu/Debian:
-
-    ``` bash
-      sudo apt update
-      sudo apt install r-base r-base-dev
-    ```
-
-    -   For Fedora:
-
-    ``` bash
-      sudo dnf install R
-    ```
-
-    -   For other distributions, see
-        <https://cran.r-project.org/bin/linux/>
-
-2.  **Install RStudio:**
-
-    -   Go to <https://posit.co/download/rstudio-desktop/>
-    -   Download the appropriate `.deb` (Ubuntu/Debian) or `.rpm`
-        (Fedora/RedHat) file
-    -   For Ubuntu/Debian:
-
-    ``` bash
-      sudo dpkg -i rstudio-*.deb
-      sudo apt install -f
-    ```
-
-    -   For Fedora:
-
-    ``` bash
-      sudo dnf install rstudio-*.rpm
-    ```
-
-## Step 2: Install packages
-
-We will use several R packages during the workshop. To install them,
-download [setup.R](setup.R) from the course website and open it in
-RStudio and run it by clicking "Source" in the top right corner of the
-script editor.
-
-If you are using Posit Cloud, use the "Upload" button in the Files pane
-to upload `setup.R`, then open it and click "Source".
+If you would like to get ahead, you can create your GitHub account before
+the course by following Part 1 of the [Materials](materials.qmd). If you
+do, please remember your username and how you signed up. You will need
+both again during the course.
