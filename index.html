@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -40,14 +43,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f82e50659aa17e08b2a1af3d54ce47af.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-f82e50659aa17e08b2a1af3d54ce47af.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-f82e50659aa17e08b2a1af3d54ce47af.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fc0ec44ed3aa11c04d697db9497e54b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-fc0ec44ed3aa11c04d697db9497e54b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fc0ec44ed3aa11c04d697db9497e54b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -129,12 +132,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#reproducible-reports-with-quarto" id="toc-reproducible-reports-with-quarto" class="nav-link active" data-scroll-target="#reproducible-reports-with-quarto">Reproducible reports with Quarto</a>
+  <li><a href="#build-a-website-with-quarto-and-github-pages" id="toc-build-a-website-with-quarto-and-github-pages" class="nav-link active" data-scroll-target="#build-a-website-with-quarto-and-github-pages">Build a website with Quarto and GitHub Pages</a>
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#audience" id="toc-audience" class="nav-link" data-scroll-target="#audience">Audience</a></li>
   <li><a href="#how-to-sign-up" id="toc-how-to-sign-up" class="nav-link" data-scroll-target="#how-to-sign-up">How to sign-up</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
   <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a></li>
   </ul></li>
   </ul>
@@ -156,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">3 June, 2026</p>
+      <p class="date">8 October, 2026</p>
     </div>
   </div>
   
@@ -168,38 +172,87 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="reproducible-reports-with-quarto" class="level1">
-<h1>Reproducible reports with Quarto</h1>
+<section id="build-a-website-with-quarto-and-github-pages" class="level1">
+<h1>Build a website with Quarto and GitHub Pages</h1>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This on-line workshop introduces you to Quarto, a scientific and technical publishing system designed to facilitate reproducible working practices by allowing you to integrate code, results, and narrative text in a single document. Quarto supports multiple programming languages, including R, Python, Julia, and Observable JavaScript.</p>
-<p>The workshop will be taught using R and RStudio, but the concepts are applicable to other programming languages supported by Quarto. Some familiarity with the layout of RStudio and beginner level knowledge of R is assumed.</p>
-<p>By the end of this workshop, participants will be able to transform raw data into a professional, polished report (HTML, Word, or PDF) where the text and analysis remain in sync. We will use the <a href="https://www.gapminder.org/">Gapminder</a> data on global development to demonstrate how to produce a reproducible country profile report that analyses the relationship between wealth (GDP per capita) and health (Life Expectancy) over the last 50 years.</p>
+<p>This short workshop shows you how to build and publish your own website using <a href="https://quarto.org/">Quarto</a>, a scientific and technical publishing system, and <a href="https://pages.github.com/">GitHub Pages</a>, a free way to host a website straight from a GitHub repository.</p>
+<p>You do not need any coding experience and you do not need to install anything. Everything happens in your web browser. You will write plain text, save it to GitHub, and a few moments later your website will be live at an address you can share.</p>
+<p>By the end of this workshop, participants will have a working website with a home page, an about page, a navigation bar (navbar) and a look of their own. Along the way you will learn the building blocks that you can use to grow the site into a project page, a portfolio, a blog or a course website like this one.</p>
 </section>
 <section id="audience" class="level2">
 <h2 class="anchored" data-anchor-id="audience">Audience</h2>
-<p>This workshop is intended for researchers and research support staff in academia or industry or others that regularly produce reports with data analysis.</p>
+<p>This workshop is intended for researchers, research support staff and others who would like a simple website for a project, a group or themselves, and who would like to be able to update it easily. No experience of GitHub, Quarto, HTML or programming is assumed.</p>
 </section>
 <section id="how-to-sign-up" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-sign-up">How to sign-up</h2>
-<p>The on-line workshop is on <strong>22 July 2026 1000 - 1200 GMT</strong></p>
-<p><a href="https://digitalskillscatalyst.ac.uk/news/2026-01-13-quarto2.html"><strong>Register for the workshop</strong></a></p>
+<p>The workshop is on <strong>[date and time to be confirmed]</strong></p>
+<p><strong>Register for the workshop:</strong> [registration link to be added]</p>
 </section>
 <section id="learning-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
 <p>Participants will learn how to:</p>
 <ul>
-<li>Construct a structured Quarto (.qmd) document using YAML headers to define metadata (title, author, table of contents).</li>
-<li>Format narrative text using Markdown syntax to create headers, lists, and emphasis without relying on word processor GUIs.</li>
-<li>Integrate R code chunks into prose to produce tables and visualizations directly within the document.</li>
-<li>Implement “Inline Code” to insert dynamic statistics (e.g., specific means or <em>p</em>-values) directly into sentences, ensuring numbers update automatically if the data changes.</li>
-<li>Control report output using “Chunk Options” to hide raw code from the final reader while keeping the results visible.</li>
-<li>Render a single source document into multiple output formats (HTML for web, MS Word for collaboration, or PDF for publication).</li>
+<li>Set up a GitHub account using a Google account, a Microsoft email address or any other email address.</li>
+<li>Create and configure a GitHub repository so that it publishes a website to GitHub Pages.</li>
+<li>Use Quarto to create website content from plain text files (<code>.qmd</code>), including headings, lists, links, images and callouts.</li>
+<li>Create a navbar so visitors can move between the pages of your site.</li>
+<li>Use a <code>styles.css</code> file to change the look of your website, including colours and fonts.</li>
 </ul>
+</section>
+<section id="schedule" class="level2">
+<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
+<p>The workshop takes about two and a half hours. It can be shortened to two hours by skipping the optional parts, or stretched to three by spending more time on the challenges.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 48%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Time (minutes)</th>
+<th style="text-align: left;">What we will do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0 - 15</td>
+<td style="text-align: left;">Welcome, what Quarto and GitHub Pages are, and a look at a finished site</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">15 - 35</td>
+<td style="text-align: left;">Part 1: Set up a GitHub account</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">35 - 60</td>
+<td style="text-align: left;">Part 2: Create a repository and publish it with GitHub Pages</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">60 - 90</td>
+<td style="text-align: left;">Part 3: Create website content with Quarto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">90 - 100</td>
+<td style="text-align: left;">Break</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">100 - 120</td>
+<td style="text-align: left;">Part 4: Create a navbar</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">120 - 145</td>
+<td style="text-align: left;">Part 5: Change the look of your site with <code>styles.css</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">145 - 150</td>
+<td style="text-align: left;">Wrap-up and where to go next</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="instructor" class="level2">
 <h2 class="anchored" data-anchor-id="instructor">Instructor</h2>
-<p>Emma Rand is a Professor in the Department of Biology at the University of York where she specialises in teaching data science and reproducibility, particularly to those who do not see themselves as programmers. She leads a UKRI funded projects called <a href="https://cloud-span.york.ac.uk/">Cloud-SPAN</a> and the <a href="https://digitalskillscatalyst.ac.uk/">UKRI Digital Research Skills Catalyst</a>.</p>
+<p><strong>[Instructor name]</strong> is <strong>[role and organisation]</strong>. <strong>[A sentence or two about the instructor and the project that funds the course.]</strong></p>
 
 
 </section>

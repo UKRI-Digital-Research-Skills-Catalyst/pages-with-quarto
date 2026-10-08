@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,51 +12,19 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -75,14 +43,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f82e50659aa17e08b2a1af3d54ce47af.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-f82e50659aa17e08b2a1af3d54ce47af.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-f82e50659aa17e08b2a1af3d54ce47af.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fc0ec44ed3aa11c04d697db9497e54b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-fc0ec44ed3aa11c04d697db9497e54b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fc0ec44ed3aa11c04d697db9497e54b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -164,17 +132,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#step-1-install-r-and-rstudio-or-use-posit-cloud" id="toc-step-1-install-r-and-rstudio-or-use-posit-cloud" class="nav-link active" data-scroll-target="#step-1-install-r-and-rstudio-or-use-posit-cloud">Step 1: Install R and RStudio or use Posit Cloud</a>
-  <ul>
-  <li><a href="#use-posit-cloud" id="toc-use-posit-cloud" class="nav-link" data-scroll-target="#use-posit-cloud">Use Posit Cloud</a></li>
-  <li><a href="#install-r-and-rstudio-on-your-computer" id="toc-install-r-and-rstudio-on-your-computer" class="nav-link" data-scroll-target="#install-r-and-rstudio-on-your-computer">Install R and RStudio on your computer</a>
-  <ul class="collapse">
-  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
-  <li><a href="#mac" id="toc-mac" class="nav-link" data-scroll-target="#mac">Mac</a></li>
-  <li><a href="#linux" id="toc-linux" class="nav-link" data-scroll-target="#linux">Linux</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#step-2-install-packages" id="toc-step-2-install-packages" class="nav-link" data-scroll-target="#step-2-install-packages">Step 2: Install packages</a></li>
+  <li><a href="#step-1-check-your-browser-and-connection" id="toc-step-1-check-your-browser-and-connection" class="nav-link active" data-scroll-target="#step-1-check-your-browser-and-connection">Step 1: Check your browser and connection</a></li>
+  <li><a href="#step-2-decide-which-email-address-to-use" id="toc-step-2-decide-which-email-address-to-use" class="nav-link" data-scroll-target="#step-2-decide-which-email-address-to-use">Step 2: Decide which email address to use</a></li>
+  <li><a href="#step-3-arrange-your-screen" id="toc-step-3-arrange-your-screen" class="nav-link" data-scroll-target="#step-3-arrange-your-screen">Step 3: Arrange your screen</a></li>
+  <li><a href="#step-4-create-your-account-early-optional" id="toc-step-4-create-your-account-early-optional" class="nav-link" data-scroll-target="#step-4-create-your-account-early-optional">Step 4: Create your account early (optional)</a></li>
   </ul>
 </nav>
     </div>
@@ -194,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">3 June, 2026</p>
+      <p class="date">8 October, 2026</p>
     </div>
   </div>
   
@@ -206,103 +167,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>To participate in this course, you will need a computer with internet access.</p>
-<p>To follow along with the activities with the instructor, you will need R and RStudio installed on your computer, <strong>or</strong> access to Posit Cloud, an online platform for R and RStudio. You will also need some R packages and optionally, a lateX distribution if you want to create PDF reports.</p>
-<p>If you are using a computer provided by your organisation you may need your IT department to install the software. If that is not possible, you can use Posit Cloud instead.</p>
-<section id="step-1-install-r-and-rstudio-or-use-posit-cloud" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-install-r-and-rstudio-or-use-posit-cloud">Step 1: Install R and RStudio or use Posit Cloud</h2>
-<section id="use-posit-cloud" class="level3">
-<h3 class="anchored" data-anchor-id="use-posit-cloud">Use Posit Cloud</h3>
-<p>Posit Cloud is an online platform that allows you to use R and RStudio directly from your web browser, without needing to install anything on your computer. The <a href="https://posit.cloud/plans/free">free plan</a> is plenty for this workshop</p>
+<p>To participate in this course, you will need a computer with internet access and a web browser.</p>
+<p>You do <strong>not</strong> need to install any software. We will use GitHub, a free website, to store and edit all of our files, and GitHub will build and publish our website for us.</p>
+<p>If you are using a computer provided by your organisation you may find that some websites are blocked. Please check Step 1 below before the course. If GitHub is blocked, you could use a personal computer instead.</p>
+<section id="step-1-check-your-browser-and-connection" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-check-your-browser-and-connection">Step 1: Check your browser and connection</h2>
+<p>You can use any recent version of Chrome, Edge, Firefox or Safari.</p>
 <ol type="1">
-<li>Go to <a href="https://positcloud.com/" class="uri">https://positcloud.com/</a></li>
-<li>Create a free account by clicking “Sign Up” in the top right corner</li>
-<li>Once logged in, click “New Project” and select “New RStudio Project”</li>
-<li>You can now use R and RStudio in your web browser!</li>
+<li>Open your browser and go to <a href="https://github.com/" class="uri">https://github.com/</a></li>
+<li>Check that the page loads and you can see a “Sign up” button in the top right corner.</li>
 </ol>
+<p>If the page does not load, please contact your IT department or the course organisers before the course.</p>
 </section>
-<section id="install-r-and-rstudio-on-your-computer" class="level3">
-<h3 class="anchored" data-anchor-id="install-r-and-rstudio-on-your-computer">Install R and RStudio on your computer</h3>
-<p>If you already have R and RStudio installed, check that you have at least R version 4.2 and RStudio version 2022.07 or later. If not, please install the latest versions by following the instructions below. Quarto comes with recent versions of RStudio and does not need to be installed separately.</p>
-<section id="windows" class="level4">
-<h4 class="anchored" data-anchor-id="windows">Windows</h4>
+<section id="step-2-decide-which-email-address-to-use" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-decide-which-email-address-to-use">Step 2: Decide which email address to use</h2>
+<p>To use GitHub you need a free GitHub account and to confirm it by email. During the course you will sign up in one of three ways. Decide now which one you would like to use:</p>
 <ol type="1">
-<li><strong>Install R:</strong>
-<ul>
-<li>Go to <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a></li>
-<li>Click “Download R-4.x.x for Windows” (where x.x is the latest version number)</li>
-<li>Run the downloaded <code>.exe</code> file and follow the installation wizard</li>
-<li>Accept the default settings</li>
-</ul></li>
-<li><strong>Install RStudio:</strong>
-<ul>
-<li>Go to <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></li>
-<li>Click “Download RStudio Desktop for Windows”</li>
-<li>Run the downloaded <code>.exe</code> file and follow the installation wizard</li>
-<li>Accept the default settings</li>
-</ul></li>
+<li><strong>A Google account.</strong> You will click “Continue with Google” and sign in as you normally do.</li>
+<li><strong>A Microsoft email address.</strong> For example, an Outlook or Hotmail address, or your work or school address if it is a Microsoft one. You will type this address into the GitHub sign-up form.</li>
+<li><strong>Any other email address.</strong> You will type this address into the GitHub sign-up form.</li>
 </ol>
+<p>Whichever you choose, make sure that you can open the inbox for that address during the course, because GitHub will send you a code to confirm that the address is yours.</p>
+<p>💡 If you use a work or university address, think about what will happen when you leave. A personal address means you will not lose access to your website when you change jobs.</p>
 </section>
-<section id="mac" class="level4">
-<h4 class="anchored" data-anchor-id="mac">Mac</h4>
-<ol type="1">
-<li><strong>Install R:</strong>
-<ul>
-<li>Go to <a href="https://cran.r-project.org/bin/macosx/" class="uri">https://cran.r-project.org/bin/macosx/</a></li>
-<li>Download the <code>.pkg</code> file for your Mac:
-<ul>
-<li>For Apple Silicon Macs (M1, M2, M3): Download the “arm64” version</li>
-<li>For Intel Macs: Download the “x86_64” version</li>
-</ul></li>
-<li>Open the downloaded <code>.pkg</code> file and follow the installation wizard</li>
-<li>Accept the default settings</li>
-</ul></li>
-<li><strong>Install RStudio:</strong>
-<ul>
-<li>Go to <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></li>
-<li>Click “Download RStudio Desktop for macOS”</li>
-<li>Open the downloaded <code>.dmg</code> file</li>
-<li>Drag the RStudio icon to your Applications folder</li>
-</ul></li>
-</ol>
+<section id="step-3-arrange-your-screen" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-arrange-your-screen">Step 3: Arrange your screen</h2>
+<p>During the course you will switch between this course website and GitHub. It helps to have the course website open in one browser window and GitHub in another, side by side, if your screen is big enough. Otherwise, use two tabs.</p>
 </section>
-<section id="linux" class="level4">
-<h4 class="anchored" data-anchor-id="linux">Linux</h4>
-<ol type="1">
-<li><p><strong>Install R:</strong></p>
-<ul>
-<li>Open a terminal</li>
-<li>For Ubuntu/Debian:</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> apt update</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> apt install r-base r-base-dev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>For Fedora:</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> dnf install R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>For other distributions, see <a href="https://cran.r-project.org/bin/linux/" class="uri">https://cran.r-project.org/bin/linux/</a></li>
-</ul></li>
-<li><p><strong>Install RStudio:</strong></p>
-<ul>
-<li>Go to <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></li>
-<li>Download the appropriate <code>.deb</code> (Ubuntu/Debian) or <code>.rpm</code> (Fedora/RedHat) file</li>
-<li>For Ubuntu/Debian:</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> dpkg <span class="at">-i</span> rstudio-<span class="pp">*</span>.deb</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> apt install <span class="at">-f</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>For Fedora:</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> dnf install rstudio-<span class="pp">*</span>.rpm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ol>
-</section>
-</section>
-</section>
-<section id="step-2-install-packages" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-install-packages">Step 2: Install packages</h2>
-<p>We will use several R packages during the workshop. To install them, download <a href="setup.R">setup.R</a> from the course website and open it in RStudio and run it by clicking “Source” in the top right corner of the script editor.</p>
-<p>If you are using Posit Cloud, use the “Upload” button in the Files pane to upload <code>setup.R</code>, then open it and click “Source”.</p>
+<section id="step-4-create-your-account-early-optional" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-create-your-account-early-optional">Step 4: Create your account early (optional)</h2>
+<p>If you would like to get ahead, you can create your GitHub account before the course by following Part 1 of the <a href="./materials.html">Materials</a>. If you do, please remember your username and how you signed up. You will need both again during the course.</p>
 
 
 </section>
