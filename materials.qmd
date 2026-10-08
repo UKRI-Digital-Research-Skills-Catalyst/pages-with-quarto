@@ -814,8 +814,6 @@ guide](https://quarto.org/docs/output-formats/html-themes.html).
 -   Quarto can also run R or Python code and put the results in your pages. The
     [Reproducible reports with
     Quarto](https://ukri-digital-research-skills-catalyst.github.io/quarto-intro/)
-    workshop, which these materials were adapted from, shows how
+    workshop shows you how
 
-Materials adapted from Rand, E. (2026). *Reproducible reports with Quarto. A
-UKRI Digital Research Skills Catalyst workshop* (v0.1.0-alpha). Zenodo.
-<https://doi.org/10.5281/zenodo.18848356>
+Good luck on your future Quarto projects!
