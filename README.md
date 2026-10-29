@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1410139031.svg)](https://doi.org/10.5281/zenodo.23766745)
+
 # Build a website with Quarto and GitHub Pages
 
 Training materials for a short (about 2.5 hour) workshop that teaches
